@@ -53,7 +53,7 @@ class JsBridge {
         for (JsMsg msg in list) {
           print(msg);
           if (msg.responseId != null) {
-
+            _callbacks[msg.responseId]?.call(msg.responseData);
           } else {
             CallBackFunction function;
             if (msg.callbackId != null) {
