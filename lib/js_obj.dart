@@ -29,8 +29,12 @@ class JsMsg {
       JsMsg msg = JsMsg();
       msg.callbackId = json["callbackId"];
       msg.responseId = json["responseId"];
-      msg.responseData = convert.jsonEncode(json["responseData"]);
-      msg.data = convert.jsonEncode(json["data"]);
+      msg.responseData = json["responseData"] is String
+          ? json["responseData"]
+          : convert.jsonEncode(json["responseData"]);
+      msg.data = json["data"] is String
+          ? json["data"]
+          : convert.jsonEncode(json["data"]);
       msg.handlerName = json["handlerName"];
       msgList.add(msg);
     }
